@@ -1,4 +1,4 @@
-from lcd_config import *
+from peripherals.lcd_config import *
 import time
 
 # Implement an upwards scrolling text for the LCD display.
