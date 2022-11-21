@@ -1,5 +1,6 @@
 import cv2
 import mediapipe as mp
+from peripherals.lcd_display import *
 
 def detect():
     mp_hands = mp.solutions.hands
@@ -12,7 +13,7 @@ def detect():
         img = cv2.flip(img, 1)
         h, w, c = img.shape
         results = hands.process(img)
-        print(results.multi_hand_landmarks)
+        send_to_lcd(results.multi_hand_landmarks)
         if results.multi_hand_landmarks:
             for hand_landmark in results.multi_hand_landmarks:
                 lm_list = []
@@ -23,9 +24,8 @@ def detect():
                     # print(id, ":", x, y)
                     cv2.circle(img, (x, y), 15, (255, 0, 0), cv2.FILLED)
                 mp_draw.draw_landmarks(img, hand_landmark,
-                                    mp_hands.HAND_CONNECTIONS,
-                                    mp_draw.DrawingSpec((0, 0, 255), 4, 2)
-                                    )
+                                       mp_hands.HAND_CONNECTIONS,
+                                       mp_draw.DrawingSpec((0, 0, 255), 4, 2)
+                                       )
         cv2.imshow("Hand Tracking", img)
         cv2.waitKey(1)
-        
