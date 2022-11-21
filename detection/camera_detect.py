@@ -12,13 +12,20 @@ def detect():
     print("going on!!")
     count = 0
     while True:
-        ret, img = cap.read()
-        img = cv2.flip(img, 1)
-        h, w, c = img.shape
-        results = hands.process(img)
         send_to_lcd(count)
+        ret, img = cap.read()
+        print("1-")
+        img = cv2.flip(img, 1)
+        print("2-")
+        h, w, c = img.shape
+        print("3-")
+        results = hands.process(img)
+        print("4-")
+        send_to_lcd(count + 16)
+        print("5-")
         count += 1
         print(results.multi_hand_landmarks)
+        print("6-")
         if results.multi_hand_landmarks:
             for hand_landmark in results.multi_hand_landmarks:
                 lm_list = []
