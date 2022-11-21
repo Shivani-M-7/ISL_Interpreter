@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-from src.peripherals.lcd_display import *
+from peripherals.lcd_display import *
 
 lcd_init()
 
