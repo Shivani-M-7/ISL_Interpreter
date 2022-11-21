@@ -4,6 +4,7 @@ import time
 # Implement an upwards scrolling text for the LCD display.
 
 prev_line = 4
+prev_string = ""
 
 def start_lcd():
     # Initialise display
@@ -18,6 +19,11 @@ def start_lcd():
 
 
 def send_to_lcd(string):
+    global prev_string
+    
+    if string == prev_string:
+        return
+    
     global prev_line
     if prev_line == 1:
         lcd_byte(LCD_LINE_2, LCD_CMD)
