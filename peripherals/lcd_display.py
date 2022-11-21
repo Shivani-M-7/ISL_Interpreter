@@ -28,10 +28,10 @@ def send_to_lcd(string):
     elif prev_line == 3:
         lcd_byte(LCD_LINE_4, LCD_CMD)
         prev_line = 4
-    else:
+    elif prev_line == 4:
         lcd_byte(LCD_LINE_1, LCD_CMD)
         prev_line = 1
     
     print(prev_line)
-    lcd_string(string, 1)	#print some left justified word on the LCD
+    lcd_string(string, 2)	#print some left justified word on the LCD
     #time.sleep(1)
