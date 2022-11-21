@@ -1,7 +1,8 @@
 import cv2
 import mediapipe as mp
-from peripherals.lcd_display import *
+from src.peripherals.lcd_display import *
 
+lcd_init()
 
 print("Detection started")
 mp_hands = mp.solutions.hands
