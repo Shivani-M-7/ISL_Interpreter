@@ -1,12 +1,12 @@
-from detection.camera_detect import *
-import peripherals.lcd_display as lcd
+from camera_detect import detect_loop
+from peripherals import send_to_lcd, start_lcd
 
 def main():
     start_lcd()
     print("lcd started")
     send_to_lcd(" ")
     print("sent first to LCD")
-    #detect()
+    detect_loop()
 
 if __name__ == '__main__':
     main()
