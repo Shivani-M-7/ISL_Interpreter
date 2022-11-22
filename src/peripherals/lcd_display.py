@@ -17,6 +17,7 @@ def start_lcd():
     #lcd_byte(LCD_LINE_1, LCD_CMD)
     #lcd_string("Hello!!", 1)
     print("LCD initialised...")
+    time.sleep(1)
 
 
 def send_to_lcd(string):
