@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-# from peripherals import *
+from peripherals import *
 
 def detect_loop():
     print("Hery!!")
@@ -17,7 +17,7 @@ def detect_loop():
         h, w, c = img.shape
         count += 1
         results = hands.process(img)
-        #print(count)
+        print(count)
         if results.multi_hand_landmarks != None:
             print(results.multi_hand_landmarks)
         if results.multi_hand_landmarks:
