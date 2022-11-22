@@ -23,6 +23,7 @@ def send_to_lcd(string):
     
     if string == prev_string:
         return
+    prev_string = string
     
     global prev_line
     if prev_line == 1:
