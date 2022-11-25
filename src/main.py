@@ -7,7 +7,7 @@ def start():
     time.sleep(2)
     print("lcd started")
     time.sleep(4)
-    send_to_lcd(" ")
+    send_to_lcd(" ", "")
     print("Starting the ISL Interpreter.", "")
     send_to_lcd("B1G2", "")
     send_to_lcd("ISL Interpreter.", "")
