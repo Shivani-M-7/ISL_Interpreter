@@ -2,6 +2,7 @@ from camera_detect import detect_loop
 import time
 from peripherals import send_to_lcd, start_lcd
 
+
 def start():
     start_lcd()
     time.sleep(2)
