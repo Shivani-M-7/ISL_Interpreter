@@ -2,7 +2,7 @@ from camera_detect import detect_loop
 import time
 from peripherals import send_to_lcd, start_lcd
 
-def main():
+def start():
     start_lcd()
     time.sleep(2)
     print("lcd started")
@@ -13,7 +13,11 @@ def main():
     send_to_lcd("ISL Interpreter.")
     time.sleep(4)
     send_to_lcd("Starting...")
-    detect_loop()
+    
+    return True
+
+
 
 if __name__ == '__main__':
-    main()
+    if start():
+        detect_loop()
