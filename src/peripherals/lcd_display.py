@@ -45,6 +45,5 @@ def send_to_lcd(string, mode):
         
     disp_string = mode + ": " + string
     lcd_string(disp_string, 2)	#print some left justified word on the LCD
-    if mode == "Sign":
-        tts(string)
+    tts(string)
     #time.sleep(1)

@@ -17,7 +17,7 @@ def detect_loop():
         img = cv2.flip(img, 1)
         h, w, c = img.shape
         results = hands.process(img)
-
+        send_to_lcd("IDKK", "Debug")
         if results.multi_hand_landmarks:
             for hand_landmark in results.multi_hand_landmarks:
                 lm_list = []
