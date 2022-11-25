@@ -1,4 +1,5 @@
 from peripherals.lcd_config import *
+from peripherals.speaker import *
 import time
 
 # Implement an upwards scrolling text for the LCD display.
@@ -42,6 +43,6 @@ def send_to_lcd(string):
         lcd_byte(LCD_LINE_1, LCD_CMD)
         prev_line = 1
     
-    print(prev_line)
     lcd_string(string, 2)	#print some left justified word on the LCD
+    tts(string)
     #time.sleep(1)
