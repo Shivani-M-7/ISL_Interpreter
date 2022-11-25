@@ -1,6 +1,6 @@
 import cv2
 import mediapipe as mp
-#from peripherals import *
+from peripherals.lcd_display import *
 
 def detect_loop():
     print("Hery!!")
@@ -11,7 +11,7 @@ def detect_loop():
     finger_tips = [8, 12, 16, 20]
     thumb_tip = 4
     print("starting")
-    count = 0
+    mode = "Sign"
     while True:
         ret, img = cap.read()
         img = cv2.flip(img, 1)
@@ -47,14 +47,14 @@ def detect_loop():
                     0].x < \
                         lm_list[5].x:
                     cv2.putText(img, "STOP", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-                    print("STOP")
+                    send_to_lcd("Stop", mode)
                     
 
                 # Forward
                 if lm_list[3].x > lm_list[4].x and lm_list[8].y < lm_list[6].y and lm_list[12].y > lm_list[10].y and \
                         lm_list[16].y > lm_list[14].y and lm_list[20].y > lm_list[18].y:
                     cv2.putText(img, "FORWARD", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
-                    print("FORWARD")
+                    send_to_lcd("Forward", mode)
 
                 # Backward
                 if lm_list[3].x > lm_list[4].x and lm_list[3].y < lm_list[4].y and lm_list[8].y > lm_list[6].y and \
@@ -63,29 +63,35 @@ def detect_loop():
                         lm_list[16].y < lm_list[14].y and lm_list[20].y < lm_list[18].y:
                     cv2.putText(img, "BACKWARD", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                     print("BACKWARD")
+                    send_to_lcd("BACKWARD", mode)
 
                 # Left
                 if lm_list[4].y < lm_list[2].y and lm_list[8].x < lm_list[6].x and lm_list[12].x > lm_list[10].x and \
                         lm_list[16].x > lm_list[14].x and lm_list[20].x > lm_list[18].x and lm_list[5].x < lm_list[0].x:
                     cv2.putText(img, "LEFT", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                     print("LEFT")
+                    send_to_lcd("LEFT", mode)
 
                 # Right
                 if lm_list[4].y < lm_list[2].y and lm_list[8].x > lm_list[6].x and lm_list[12].x < lm_list[10].x and \
                         lm_list[16].x < lm_list[14].x and lm_list[20].x < lm_list[18].x:
                     cv2.putText(img, "RIGHT", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                     print("RIGHT")
+                    send_to_lcd("RIGHT", mode)
+                    
                 if all(finger_fold_status):
                     # Okay
                     if lm_list[thumb_tip].y < lm_list[thumb_tip - 1].y < lm_list[thumb_tip - 2].y and lm_list[0].x < \
                             lm_list[3].y:
                         print("OKAY")
+                        send_to_lcd("OKAY", mode)
                         cv2.putText(img, "OKAY", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 3)
                     # Disapprove
                     if lm_list[thumb_tip].y > lm_list[thumb_tip - 1].y > lm_list[thumb_tip - 2].y and lm_list[0].x < \
                             lm_list[3].y:
                         cv2.putText(img, "DISAPPROVE", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                         print("DISAPPROVE")
+                        send_to_lcd("DISAPPROVE", mode)
 
                 mp_draw.draw_landmarks(img, hand_landmark,
                                        mp_hands.HAND_CONNECTIONS,
