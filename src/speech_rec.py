@@ -8,7 +8,8 @@ while True:
         try:
             audio = recogniser.listen(source)
             data = recogniser.recognize_google(audio)
-            send_to_lcd(data, "Mic")
+            d = data.split(", ")
+            send_to_lcd(d[0], "Mic")
             
         except:
             print('No audio detected')

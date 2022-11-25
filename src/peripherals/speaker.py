@@ -1,4 +1,5 @@
 import os
 
 def tts(word):
-   os.system('espeak "{}"'.format(word)) 
+    print("sent to tts")
+    os.system('espeak "{}"'.format(word)) 
