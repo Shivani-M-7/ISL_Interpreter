@@ -8,11 +8,11 @@ def start():
     print("lcd started")
     time.sleep(4)
     send_to_lcd(" ")
-    print("Starting the ISL Interpreter.")
-    send_to_lcd("B1G2")
-    send_to_lcd("ISL Interpreter.")
+    print("Starting the ISL Interpreter.", "")
+    send_to_lcd("B1G2", "")
+    send_to_lcd("ISL Interpreter.", "")
     time.sleep(4)
-    send_to_lcd("Starting...")
+    send_to_lcd("Starting...", "")
     
     return True
 

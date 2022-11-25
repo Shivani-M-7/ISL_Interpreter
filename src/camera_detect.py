@@ -96,5 +96,3 @@ def detect_loop():
         cv2.imshow("Hand Sign Detection", img)
         cv2.waitKey(1)
 
-
-detect_loop()
