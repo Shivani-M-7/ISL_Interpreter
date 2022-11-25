@@ -40,6 +40,7 @@ def detect_loop():
                 x, y = int(lm_list[8].x * w), int(lm_list[8].y * h)
                 print(x, y)
 
+                action = ""
                 # stop
                 if lm_list[4].y < lm_list[2].y and lm_list[8].y < lm_list[6].y and lm_list[12].y < lm_list[10].y and \
                         lm_list[16].y < lm_list[14].y and lm_list[20].y < lm_list[18].y and lm_list[17].x < lm_list[
@@ -47,6 +48,7 @@ def detect_loop():
                         lm_list[5].x:
                     cv2.putText(img, "STOP", (20, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 3)
                     print("STOP")
+                    
 
                 # Forward
                 if lm_list[3].x > lm_list[4].x and lm_list[8].y < lm_list[6].y and lm_list[12].y > lm_list[10].y and \
